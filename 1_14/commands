@@ -1,0 +1,4 @@
+docker build -t example-backend -f Dockerfile.backend ..
+docker build -t example-frontend -f Dockerfile.frontend .. 
+docker run --rm -d -p 5001:5001 example-frontend 
+docker run --rm -d -p 8080:8080 example-backend
