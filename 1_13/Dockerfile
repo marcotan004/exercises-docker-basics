@@ -2,12 +2,13 @@ FROM golang:1.16-alpine
 
 EXPOSE 8080
 
-ENV REQUEST_ORIGIN=https://example.com
 ENV PORT=8080
 WORKDIR /usr/src/app
 
-COPY . .
+COPY go.mod go.sum ./
+RUN go mod download
 
-RUN go build
+COPY . .
+RUN go build -o server
 
 CMD ["./server"]
